@@ -3,7 +3,7 @@
 <?php
     $sql = "SELECT * FROM usuarios WHERE id=".$_REQUEST["id"];
     $res = $conn->query($sql);
-    $row = $res->fetch_object();
+    $row = $res->fetch_object(); #buscar pelo id e auto completar
 
 ?>
 
@@ -35,7 +35,7 @@
     $rs = $conn->query("SELECT id, name FROM services ORDER BY name");
     while($s = $rs->fetch_object()){
       $sel = ($row->service_id == $s->id) ? "selected" : "";
-      echo "<option value=\"{$s->id}\" {$sel}>{$s->name}</option>";
+      echo "<option value=\"{$s->id}\" {$sel}>{$s->name}</option>"; 
     }
   ?>
 </select>

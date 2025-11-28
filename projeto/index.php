@@ -12,16 +12,18 @@
     <header>
         <nav>
             <a class="logo text-white text-decoration-none" href="index.php">Barbearia</a>
-            <div class="mobile-menu">
+            <div class="mobile-menu"> <!-- menu responsivo -->
                 <div class="line1"></div>
                 <div class="line2"></div>
                 <div class="line3"></div>
             </div>
-            <ul class="nav-list text-white">
+            <ul class="nav-list text-white"> <!-- links navbar -->
                 <li><a href="index.php" class="text-white text-decoration-none">Home</a></li>
                 <li><a href="?page=novo" class="text-white text-decoration-none">Agendar Horário</a></li>
-                <li><a href="?page=listar" class="text-white text-decoration-none">Horários agendados</a></li>
+                <li><a href="index.php?page=listar" class="text-white text-decoration-none">Horários agendados</a></li>
                 <li><a href="" class="text-white text-decoration-none">Contatos</a></li>
+                <li><a href="logout.php" class="text-white text-decoration-none">Sair</a></li>
+
             </ul>
         </nav>
     </header>
@@ -33,13 +35,17 @@
 
         <div class="container"> 
             <div class="row"> <!--css -->
-                <div class="col text-white mt-5"><!--margin top 5 -->
-                    <?php
+                <div class="col text-white mt-5"><!--margin top 5 --> 
+                    <? #direcionamentos
             include("conexao.php");
             switch(@$_REQUEST["page"]){
                 case "novo":
                     include("agendar_horario.php");
                     break;
+                    case "listar":
+            
+                        include("horarios_agendados.php");
+                        break;
                     case "listar":
                         include("horarios_agendados.php");
                         break;
@@ -50,7 +56,7 @@
                             include("editar_agendamento.php");
                             break;
                         default:
-                        print "<h1>Bem vindos!</h1>";
+                        print "<h1>Bem vindos!</h1>"; #front php
                         print "<h3>A barbearia para cuidar da sua aparencia, e renovar sua autoestima!</h3>";
                         print "<p class='mt-3' style='color:#b5b5c9;'>Cortes modernos, atendimento premium e preço justo.</p>";
 
@@ -71,7 +77,7 @@
         </div>
 
      </main>
-
+                                            <!-- CABEÇALHO -->
      <footer class="mt-5 py-4" style="background:#1e1e27; border-top:1px solid #2d2d36;">
     <div class="container text-center text-white">
         <h4 class="fw-bold mb-3">Barbearia</h4>

@@ -10,6 +10,15 @@ SET time_zone = "+00:00";
 CREATE DATABASE IF NOT EXISTS `cadastro` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `cadastro`;
 
+CREATE TABLE `login_usuarios` (
+  `id` int(11) NOT NULL,
+  `usuario` varchar(50) NOT NULL,
+  `senha` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+INSERT INTO `login_usuarios` (`id`, `usuario`, `senha`) VALUES
+(1, 'admin', '81dc9bdb52d04dc20036dbd8313ed055');
+
 CREATE TABLE `services` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
@@ -34,8 +43,12 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `usuarios` (`id`, `nome`, `horario`, `data`, `serviço`, `observacao`, `service_id`) VALUES
-(11, 'Rebeca de Jesus', '14:05:00', '2025-11-28', '', 'navalha', 4);
+(17, 'Paulo tassio', '15:30:00', '2025-11-29', '', 'baixo em cima', 3),
+(18, 'Paulo tassio', '17:40:00', '2025-11-29', '', 'maquina', 3);
 
+
+ALTER TABLE `login_usuarios`
+  ADD PRIMARY KEY (`id`);
 
 ALTER TABLE `services`
   ADD PRIMARY KEY (`id`);
@@ -45,11 +58,14 @@ ALTER TABLE `usuarios`
   ADD KEY `fk_usuarios_service` (`service_id`);
 
 
+ALTER TABLE `login_usuarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 ALTER TABLE `services`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 ALTER TABLE `usuarios`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 
 ALTER TABLE `usuarios`
